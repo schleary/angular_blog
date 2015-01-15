@@ -1,0 +1,33 @@
+<div ng-controller="homeController">
+
+  Search: <input type="text" ng-model="search"/>
+  Search by Title: <input type="text" ng-model="search.title"/>
+  <!-- good for troubleshooting -->
+  Search is: {{search.title}}
+
+  <div class="form">
+    Title: <input type="text" ng-model="newPost.title"/>
+    Content: <input type="text" ng-model="newPost.content"/>
+    Tags: <span ng-repeat="tag in tags">
+      <input type="checkbox" value="tag.id">{{tag.name}}</input>
+    </span>
+    <button ng-click="submitNewPost()">
+      Create a new Post
+    </button>
+  </div>
+  The new post is: {{newPost}}
+
+  <span ng-repeat="post in posts | filter:search:strict">
+    <h2>{{post.title}}</h2><hr>
+    <small>{{post.date | date: 'EEEE'}}</small>
+    <span ng-repeat="tag_id in post.tag_ids">{{getTagName(tag_id)}}</span><hr>
+    {{post.content}}<hr>
+  </span>
+  {{tags}}
+
+  <!-- <label>Hello? Is anybody there?</label>
+  <input type="text" ng-model="hello" placeholder="Maybe a traditional greeting?">
+  <hr>
+  <h1>{{hello}}</h1>
+  {{howdy}} -->
+</div>
