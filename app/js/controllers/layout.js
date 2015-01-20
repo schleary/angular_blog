@@ -51,7 +51,7 @@ homeControllerModule.controller('homeController', ['$scope', '$http', function($
     for (i = 0; i < $scope.tags.length; i++){
       // checks to see if the param we passed is equal to the tag id
       if(id == $scope.tags[i].id) {
-        ret = $scope.tags[i]
+        ret = $scope.tags[i].name
       }
     }
     return ret;
