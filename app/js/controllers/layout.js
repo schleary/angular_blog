@@ -2,8 +2,8 @@ var homeControllerModule = angular.module('homeControllerModule', []);
 
 homeControllerModule.controller('homeController', ['$scope', '$http', 'apiService', function($scope, $http, apiService) {
   $scope.hello = "Hi";
-  // $scope.posts = //an array we'll add!
-  // $scope.tags = //an array we'll add!
+  $scope.posts = [];
+  $scope.tags = [];
 
   // $http.get('http://localhost:3000/posts') //returns a promise object
   apiService.get('posts')
@@ -74,14 +74,16 @@ homeControllerModule.controller('homeController', ['$scope', '$http', 'apiServic
     $scope.posts.push(postToPush);
 
     // sending to the API
-    $http.post('http://localhost:3000/posts',
-      {
-        post: {
-          title: $scope.newPost.title,
-          content: $scope.newPost.content
-        }
-      }
-    )
+    apiService.postPost($scope.newPost);
+
+    // $http.post('http://localhost:3000/posts',
+    //   {
+    //     post: {
+    //       title: $scope.newPost.title,
+    //       content: $scope.newPost.content
+    //     }
+    //   }
+    // )
   }
   $scope.toggleId = function(id) {
     var i = $scope.newPost.tag_ids.indexOf(id);
