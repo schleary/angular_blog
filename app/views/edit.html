@@ -1,4 +1,8 @@
-<div ng-controller="newPostController">
+<div ng-controller="editPostController">
+  post name is {{postName}}</br>
+
+  id is {{id}}
+  
   <div class="form">
     Title: <input type="text" ng-model="newPost.title"/>
     Content: <input type="text" ng-model="newPost.content"/>
@@ -9,7 +13,4 @@
       Create a new post
     </button>
   </div>
-
-<!--   new name is: {{newName}} -->
-  name is {{name}}
 </div>

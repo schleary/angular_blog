@@ -1,6 +1,6 @@
 var homeControllerModule = angular.module('homeControllerModule', []);
 
-homeControllerModule.controller('homeController', ['$scope', '$http', function($scope, $http) {
+homeControllerModule.controller('homeController', ['$scope', '$http', 'apiService', function($scope, $http, apiService) {
   $scope.hello = "Hi";
   // $scope.posts = //an array we'll add!
   // $scope.tags = //an array we'll add!

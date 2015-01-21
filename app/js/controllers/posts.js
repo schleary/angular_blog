@@ -12,3 +12,8 @@ postsControllerModule.controller('postController', ['$scope', '$http', '$statePa
   $scope.postName ="this is the post view";
   $scope.id = $stateParams.id;
 }]);
+
+postsControllerModule.controller('editPostController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+  $scope.postName ="this is the post view";
+  $scope.id = $stateParams.id;
+}]);

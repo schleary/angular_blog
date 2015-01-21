@@ -6,9 +6,6 @@
   Tags: <span ng-repeat="tag in tags">
       <input type="checkbox" value="tag.id" ng-click="addTag(tag.id)">{{tag.name}}</input>
     </span><br>
-  tag array is {{tagArray}}<br>
-
-  search is: {{search}}
 <br><br><hr>
   <div class="form">
     Title: <input type="text" ng-model="newPost.title"/>
@@ -20,13 +17,18 @@
       Create a new post
     </button>
   </div>
-  the new post is: {{newPost}}
+
+  <hr>
 
   <span ng-repeat="post in posts | filter:search:strict">
 
     <a ui-sref="show({id: post.id})">
       <h2>{{post.title}}</h2><br>
     </a>
+
+    <button ng-click="editPost()">
+      Edit post
+    </button><br>
 
     <small ng-repeat="tag_id in post.tag_ids">
       {{getTagName(tag_id)}}
@@ -35,6 +37,6 @@
     <span>{{post.date | date:'EEEE'}}</span><br>
     <p>{{post.content}}</p>
     <hr>
+
   </span>
-  {{tags}}
 </div>
