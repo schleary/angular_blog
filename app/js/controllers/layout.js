@@ -5,7 +5,8 @@ homeControllerModule.controller('homeController', ['$scope', '$http', 'apiServic
   // $scope.posts = //an array we'll add!
   // $scope.tags = //an array we'll add!
 
-  $http.get('http://localhost:3000/posts')
+  // $http.get('http://localhost:3000/posts') //returns a promise object
+  apiService.get('posts')
     .success(function(data){
       $scope.posts = data;
     });
@@ -40,7 +41,8 @@ homeControllerModule.controller('homeController', ['$scope', '$http', 'apiServic
   //     { "id": "doop5", "name": "everything is awesome" }
   //   ]
 
-  $http.get('http://localhost:3000/tags')
+  // $http.get('http://localhost:3000/tags')
+  apiService.get('tags')
     .success(function(data){
       $scope.tags = data;
     });
