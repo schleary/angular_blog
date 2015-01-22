@@ -24,6 +24,14 @@ blahgApp.config(function($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('edit', {
+        url: '/edit-post',
+        views: {
+          'edit': {
+            templateUrl: 'app/views/edit.html',
+          }
+        }
+      })
       .state('show', {
         url: '/post/:id',
         templateUrl: 'app/views/show.html',

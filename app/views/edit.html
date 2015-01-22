@@ -2,14 +2,16 @@
   post name is {{postName}}</br>
 
   id is {{id}}
-  
+
   <div class="form">
-    Title: <input type="text" ng-model="newPost.title"/>
-    Content: <input type="text" ng-model="newPost.content"/>
+    Title: <input type="text" ng-model="editPost.title"/>
+    Content: <input type="text" ng-model="editPost.content"/>
     Tags: <span ng-repeat="tag in tags">
       <input type="checkbox" value="tag.id" ng-click="toggleId(tag.id)">{{tag.name}}</input>
     </span>
-    <button ng-click="submitNewPost()">
+    <!-- <button ng-click="submitNewPost()"> -->
+
+    <button ng-click="submitEditPost()"
       Create a new post
     </button>
   </div>

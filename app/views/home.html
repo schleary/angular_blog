@@ -26,13 +26,20 @@
       <h2>{{post.title}}</h2><br>
     </a>
 
-    <button ng-click="editPost()">
+    <!-- <button ng-click="editPost()">
       Edit post
-    </button><br>
+    </button><br> -->
+    <a ui-sref=".edit">EDIT</a>
+
+    <span ng-if="post.tag_ids.length > 0" </span>
+      Tags:
+    </span>
 
     <small ng-repeat="tag_id in post.tag_ids">
       {{getTagName(tag_id)}}
     </small>
+    <br>
+
 
     <span>{{post.date | date:'EEEE'}}</span><br>
     <p>{{post.content}}</p>
