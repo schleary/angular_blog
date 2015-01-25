@@ -1,15 +1,12 @@
 <div ng-controller="newPostController">
   <div class="form">
-    Title: <input type="text" ng-model="newPost.title"/>
-    Content: <input type="text" ng-model="newPost.content"/>
-    Tags: <span ng-repeat="tag in tags">
+    <h4>Title:</h4> <input type="text" ng-model="newPost.title"/>
+    <h4>Content:</h4> <input type="text" ng-model="newPost.content"/>
+    <h4>Tags:</h4> <span ng-repeat="tag in tags">
       <input type="checkbox" value="tag.id" ng-click="toggleId(tag.id)">{{tag.name}}</input>
     </span>
     <button ng-click="submitNewPost()">
-      Create a new post
+      Create New Post
     </button>
   </div>
-
-<!--   new name is: {{newName}} -->
-  name is {{name}}
 </div>

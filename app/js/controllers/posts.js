@@ -51,8 +51,23 @@ postsControllerModule.controller('postController', ['$scope', '$http', '$statePa
 }]);
 
 postsControllerModule.controller('editPostController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-  $scope.postName ="this is the post view";
-  $scope.id = $stateParams.id;
+  $http.get('http://localhost:3000/post/edit') //returns a promise object
+    .success(function(data){
+      $scope.post = data;
+    });
+
+  $scope.editPost = {"title": '', "content": '', "tag_ids": []};
+
+  $scope.submitEditPost = function(){
+    $http.post('http://localhost:3000/posts',
+      {
+        post: {
+          title: $scope.editPost.title,
+          content: $scope.editPost.content
+        }
+      }
+    )
+  }
 }]);
 
 postsControllerModule.controller('showPostController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
