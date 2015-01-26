@@ -101,23 +101,37 @@ postsControllerModule.controller('postController', ['$scope', '$http', '$statePa
 }]);
 
 postsControllerModule.controller('editPostController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-  $http.get('http://localhost:3000/post/edit') //returns a promise object
+
+  apiService.get('posts')
     .success(function(data){
-      $scope.post = data;
+
+      for(var i = 0; i < data.length; i++){
+
+        if (data[i].id == $stateParams.id){
+          $scope.post = data[i];
+        }
+      };
+      $scope.postName = $scope.post.title;
+      $scope.id = $stateParams.id;
     });
 
-  $scope.editPost = {"title": '', "content": '', "tag_ids": []};
+    apiService.get('tags')
+      .success(function(data){
+        $scope.tags = data;
+      });
 
-  $scope.submitEditPost = function(){
-    $http.post('http://localhost:3000/posts',
-      {
-        post: {
-          title: $scope.editPost.title,
-          content: $scope.editPost.content
+    $scope.getTagName = function(id) {
+      var ret = "";
+      // loops through all of the tags in $scope.tags
+      for (i = 0; i < $scope.tags.length; i++){
+        // checks to see if the param we passed is equal to the tag id
+        if(id == $scope.tags[i].id) {
+          ret = $scope.tags[i].name
         }
       }
-    )
-  }
+      return ret;
+    }
+
 }]);
 
 postsControllerModule.controller('showPostController', ['$scope', '$http', '$stateParams', 'apiService', function($scope, $http, $stateParams, apiService){
@@ -135,6 +149,21 @@ postsControllerModule.controller('showPostController', ['$scope', '$http', '$sta
       $scope.id = $stateParams.id;
     });
 
-    
+    apiService.get('tags')
+      .success(function(data){
+        $scope.tags = data;
+      });
+
+    $scope.getTagName = function(id) {
+      var ret = "";
+      // loops through all of the tags in $scope.tags
+      for (i = 0; i < $scope.tags.length; i++){
+        // checks to see if the param we passed is equal to the tag id
+        if(id == $scope.tags[i].id) {
+          ret = $scope.tags[i].name
+        }
+      }
+      return ret;
+    }
 
 }]);

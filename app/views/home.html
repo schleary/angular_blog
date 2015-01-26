@@ -23,9 +23,8 @@
       <br>
       Tags: <span ng-repeat="tag in tags">
         <input type="checkbox" value="tag.id" ng-click="toggleId(tag.id)">{{tag.name}}</input>
-      <br>
-      <br>
     </span>
+    <br><br>
     <button ng-click="submitNewPost()">
       Create a new post
     </button>
@@ -42,7 +41,10 @@
       <!-- <button ng-click="editPost()">
         Edit post
       </button><br> -->
-      <a ui-sref=".edit">EDIT</a>
+
+      <a ui-sref="edit({id: post.id})">
+        EDIT
+      </a>
 
       <span ng-if="post.tag_ids.length > 0" </span>
         Tags:

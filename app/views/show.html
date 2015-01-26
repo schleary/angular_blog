@@ -1,13 +1,13 @@
 <div ng-controller="showPostController">
+  <hr>
   <a ui-sref="show({id: post.id})">
     <h2>{{post.title}}</h2><br>
   </a>
-
+  <span>{{post.date | date:'EEEE'}}</span><br>
   <small ng-repeat="tag_id in post.tag_ids">
     {{getTagName(tag_id)}}
   </small>
-
-  <span>{{post.date | date:'EEEE'}}</span><br>
+  <br><br>
   <p>{{post.content}}</p>
   <hr>
 
