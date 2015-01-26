@@ -1,0 +1,17 @@
+.left{
+  float: left;
+  width: 40%;
+}
+
+.right{
+  float: right;
+  width: 45%;
+  padding: 10px;
+  background-color: #d0e4fe;
+  min-height: 100px;
+}
+
+.rest{
+  display: block;
+  float: left;
+}

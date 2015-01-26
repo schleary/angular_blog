@@ -1,15 +1,7 @@
-<div ng-controller="postController">
-  post name is {{postName}}</br>
-
-  id is {{id}}
-
+<div ng-controller="showPostController">
   <a ui-sref="show({id: post.id})">
     <h2>{{post.title}}</h2><br>
   </a>
-
-  <button ng-click="showPost()">
-    Show post
-  </button><br>
 
   <small ng-repeat="tag_id in post.tag_ids">
     {{getTagName(tag_id)}}

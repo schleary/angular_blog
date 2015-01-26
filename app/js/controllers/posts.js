@@ -120,7 +120,21 @@ postsControllerModule.controller('editPostController', ['$scope', '$http', '$sta
   }
 }]);
 
-postsControllerModule.controller('showPostController', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-  $scope.postName ="this is the post view";
-  $scope.id = $stateParams.id;
+postsControllerModule.controller('showPostController', ['$scope', '$http', '$stateParams', 'apiService', function($scope, $http, $stateParams, apiService){
+
+  apiService.get('posts')
+    .success(function(data){
+
+      for(var i = 0; i < data.length; i++){
+
+        if (data[i].id == $stateParams.id){
+          $scope.post = data[i];
+        }
+      };
+      $scope.postName = $scope.post.title;
+      $scope.id = $stateParams.id;
+    });
+
+    
+
 }]);

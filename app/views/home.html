@@ -6,57 +6,58 @@
   <br><br>
   Tags: <span ng-repeat="tag in tags">
       <input type="checkbox" value="tag.id" ng-click="addTag(tag.id)">{{tag.name}} </input>
-    </span><br>
-<br><br><hr>
-<h2>Add New Post</h2>
+    </span><br><br><br><hr>
+
+  <h2>Add New Post</h2>
+  <span class = "right">
+    <h5>Title: </h5>{{newPost.title}}
+    <br>
+    <h5>Content: </h5>{{newPost.content}}
+  </span>
+
   <div class="form">
-    Title: <input type="text" ng-model="newPost.title"/><br><br>
-    Content: <input type="text" ng-model="newPost.content"/>
-    <br>
-    <br>
-    Tags: <span ng-repeat="tag in tags">
-      <input type="checkbox" value="tag.id" ng-click="toggleId(tag.id)">{{tag.name}}</input>
+    <span class = "left">
+      Title: <input type="text" ng-model="newPost.title"/><br><br>
+      Content: <input type="text" ng-model="newPost.content"/>
+      <br>
+      <br>
+      Tags: <span ng-repeat="tag in tags">
+        <input type="checkbox" value="tag.id" ng-click="toggleId(tag.id)">{{tag.name}}</input>
+      <br>
+      <br>
     </span>
-    <br>
-    <br>
-    Title: {{newPost.title}}
-    <br>
-    Content: {{newPost.content}}
-    <br>
-    <br>
     <button ng-click="submitNewPost()">
       Create a new post
     </button>
-
-  </div>
-
-  <hr>
-
-
-  <span ng-repeat="post in posts | filter:search:strict">
-
-    <a ui-sref="show({id: post.id})">
-      <h3>{{post.title}}</h3><br>
-    </a>
-
-    <!-- <button ng-click="editPost()">
-      Edit post
-    </button><br> -->
-    <a ui-sref=".edit">EDIT</a>
-
-    <span ng-if="post.tag_ids.length > 0" </span>
-      Tags:
-    </span>
-
-    <small ng-repeat="tag_id in post.tag_ids">
-      {{getTagName(tag_id)}}
-    </small>
+</div>
+  <div class = "rest">
     <br>
-
-
-    <span>{{post.date | date:'EEEE'}}</span><br>
-    <p>{{post.content}}</p>
     <hr>
+    <span ng-repeat="post in posts | filter:search:strict">
 
-  </span>
+      <a ui-sref="show({id: post.id})">
+        <h3>{{post.title}}</h3><br>
+      </a>
+
+      <!-- <button ng-click="editPost()">
+        Edit post
+      </button><br> -->
+      <a ui-sref=".edit">EDIT</a>
+
+      <span ng-if="post.tag_ids.length > 0" </span>
+        Tags:
+      </span>
+
+      <small ng-repeat="tag_id in post.tag_ids">
+        {{getTagName(tag_id)}}
+      </small>
+      <br>
+
+
+      <span>{{post.date | date:'EEEE'}}</span><br>
+      <p>{{post.content}}</p>
+      <hr>
+
+    </span>
+  </div>
 </div>
